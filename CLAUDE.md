@@ -14,6 +14,9 @@
 - Line length: 79 characters max
 - Avoid magic numbers; always assign named constants
 
+## Git
+- Never include "Co-Authored-By: Claude" in commit messages
+
 ## Documentation
 - Always update CHANGELOG.md and README.md in English
 - CHANGELOG.md lives at the repository root (git-managed)
