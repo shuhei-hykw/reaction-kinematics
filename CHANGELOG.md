@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-05-27 17:15 — Update CLAUDE.md coding rules
+
+### Changed
+- Add Git rule: never include "Co-Authored-By: Claude" in commit messages
+- Add Documentation rule: CHANGELOG.md must be updated in every commit
+
 ## 2026-05-27 16:00 — Initial implementation of two-body kinematics
 
 ### Added
