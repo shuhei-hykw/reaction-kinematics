@@ -124,3 +124,34 @@ class TwoBodyReaction:
       "p_lab":        p_lab,
       "theta_lab_deg": np.degrees(theta_lab),
     }
+
+  #____________________________________________________________________________
+  def generate_phase_space(self, p_beam: float,
+                           n_events: int = 50000) -> dict:
+    """Phase-space MC: ejectile lab angle (deg), momentum and weights.
+
+    Generates the two-body final state with the `phasespace` package
+    (isotropic in the CM for two bodies) and boosts to the lab frame.
+    Returns a dict with keys: theta_lab_deg, p_lab, weights.
+    """
+    import os
+    os.environ.setdefault("TF_CPP_MIN_LOG_LEVEL", "3")  # quiet TF logs
+    import phasespace  # lazy import: pulls in tensorflow
+
+    e1 = np.sqrt(p_beam**2 + self.m1**2)
+    e_tot = e1 + self.m2
+    sqrt_s = self.sqrt_s(p_beam)
+    # Lab 4-momentum of the initial system (px, py, pz, E) to boost into.
+    boost_to = np.array([[0.0, 0.0, p_beam, e_tot]])
+
+    decay = phasespace.nbody_decay(sqrt_s, [self.m3, self.m4])
+    weights, parts = decay.generate(n_events=n_events, boost_to=boost_to)
+
+    p3 = np.asarray(parts["p_0"])  # ejectile, lab frame (px, py, pz, E)
+    px, py, pz = p3[:, 0], p3[:, 1], p3[:, 2]
+    p_mag = np.sqrt(px**2 + py**2 + pz**2)
+    return {
+      "theta_lab_deg": np.degrees(np.arccos(pz / p_mag)),
+      "p_lab":         p_mag,
+      "weights":       np.asarray(weights),
+    }

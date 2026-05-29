@@ -223,3 +223,6 @@ output/
 
 # macOS
 .DS_Store
+
+# Personal local Claude instructions
+CLAUDE.local.md

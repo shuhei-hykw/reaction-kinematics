@@ -7,7 +7,11 @@ from module import TwoBodyReaction, load_config, latex_name
 from module.plotter import (
   plot_kinematic_locus,
   plot_cm_vs_lab_angle,
+  plot_angle_distribution,
+  plot_locus_density,
 )
+
+DEFAULT_ANGLE_BINS = 90
 
 
 #______________________________________________________________________________
@@ -93,6 +97,19 @@ def main():
   plot_cm_vs_lab_angle(
     cases, angle_range, angle_steps, output_name, title,
   )
+
+  # Optional phase-space plots (opt-in via plot.n_events). Generate the
+  # samples once and reuse them for both the angle histogram and the
+  # (theta_lab, p_lab) density plot.
+  n_events = int(plot_cfg.get("n_events", 0))
+  if n_events > 0:
+    n_bins = int(plot_cfg.get("angle_bins", DEFAULT_ANGLE_BINS))
+    samples = [
+      (reaction.generate_phase_space(p_beam, n_events=n_events), label)
+      for reaction, p_beam, label in cases
+    ]
+    plot_angle_distribution(samples, n_bins, output_name, title)
+    plot_locus_density(samples, n_bins, output_name, title)
 
 
 if __name__ == "__main__":

@@ -1,5 +1,43 @@
 # Changelog
 
+## 2026-05-29 20:10 — Target-comparison configs and README figures
+
+### Added
+- `config/dcx_kpi_target_compare.yaml`: `(K-, pi+)` on free proton vs 9Be
+  (`Sigma-` / `9_Lambda He`, recoil `8He + Lambda`) at 1.50 GeV/c.
+- `config/dcx_pik_target_compare.yaml`: `(pi-, K+)` on free proton vs 9Be
+  (same final states) at 1.20 GeV/c.
+- `docs/` kinematic-locus figures for both, embedded side by side in
+  README (output/ is git-ignored, so committed copies live under docs/).
+
+### Notes
+- Same contrast in both probes: the free proton is confined to a forward
+  cone (double-valued locus near threshold), while on 9Be the ejectile
+  spreads over all angles at nearly constant momentum (recoilless).
+
+## 2026-05-29 14:32 — Phase-space angular frequency and locus density
+
+### Added
+- `TwoBodyReaction.generate_phase_space(p_beam, n_events)`: generate the
+  two-body final state with the `phasespace` package (isotropic in the CM
+  for two bodies) and boost to the lab via `boost_to`. Returns the
+  ejectile `theta_lab_deg`, `p_lab` and event `weights`. `phasespace`
+  (and hence tensorflow) is imported lazily, with TF logs quieted.
+- `plotter.plot_angle_distribution`: histogram of the ejectile lab-angle
+  frequency, overlaying the cases.
+- `plotter.plot_locus_density`: 2D histogram of events in the
+  (theta_lab, p_lab) plane, one panel per case, so the kinematic locus is
+  coloured by where events concentrate.
+- Opt-in via `plot.n_events` (>0) and `plot.angle_bins`; samples are
+  generated once in `run.py` and shared by both phase-space plots.
+
+### Notes
+- Phase space only (matrix element assumed flat); the dynamical dsigma/
+  dOmega angular dependence is not included.
+- For K- + p/9Be -> pi+ + Sigma-/(8He+Lambda) at 1.5 GeV/c: the free
+  proton peaks near theta_lab 30-45 deg, while 9Be peaks near 70-90 deg
+  with a nearly flat (recoilless) locus.
+
 ## 2026-05-29 13:33 — Overlay multiple targets/momenta; nuclear targets
 
 ### Added

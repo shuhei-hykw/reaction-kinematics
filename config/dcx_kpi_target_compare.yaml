@@ -1,0 +1,20 @@
+# DCX, kpi probe (K-, pi+): free proton vs 9Be, at 1.5 GeV/c.
+# Double charge exchange (Delta Z = -2):
+#   p   (K-, pi+) Sigma-
+#   9Be (K-, pi+) 9_Lambda He   (recoil = 8He core + Lambda, B_Lambda = 0)
+
+reaction:
+  beam:     "K-"
+  ejectile: "pi+"
+  target:   ["p", "Be9"]
+  recoil:   ["Sigma-", "He8 + Lambda"]
+
+beam_momentum:
+  value: 1.5      # GeV/c
+
+plot:
+  angle_range: [0, 180]   # lab angle [deg]
+  angle_steps: 300
+  name:        "dcx_kpi_target_compare"
+  n_events:    50000      # phase-space MC events (>0 enables angle hist)
+  angle_bins:  90         # histogram bins over 0-180 deg (2 deg each)
