@@ -1,0 +1,18 @@
+# DCX (double charge exchange), kpi probe: p(K-, pi+)Sigma-
+# at p_beam = 1.5 GeV/c.
+# Baryon charge changes by two units: p(+1) -> Sigma-(-1).
+# Exothermic (m_in > m_out): threshold momentum is 0.
+
+reaction:
+  beam:     "K-"
+  target:   "p"
+  ejectile: "pi+"
+  recoil:   "Sigma-"
+
+beam_momentum:
+  value: 1.5      # GeV/c
+
+plot:
+  angle_range: [0, 180]   # lab angle [deg]
+  angle_steps: 300
+  name:        "dcx_kpi_1.50"   # output base name (dir fixed to output/)

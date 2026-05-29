@@ -1,0 +1,16 @@
+# DCX, kpi probe: p(K-, pi+)Sigma- momentum scan.
+# Demonstrates overlaying multiple beam momenta on one plot.
+
+reaction:
+  beam:     "K-"
+  target:   "p"
+  ejectile: "pi+"
+  recoil:   "Sigma-"
+
+beam_momentum:
+  scan: [1.0, 1.5, 2.0]   # GeV/c (multiple momenta, overlaid)
+
+plot:
+  angle_range: [0, 180]   # lab angle [deg]
+  angle_steps: 300
+  name:        "dcx_kpi_scan"   # output base name (dir fixed to output/)

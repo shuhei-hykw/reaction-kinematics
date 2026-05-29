@@ -1,0 +1,22 @@
+# NCX (pi+, K+)Lambda: free neutron vs bound in 12C, at 1.2 GeV/c.
+# Demonstrates overlaying different (target, recoil) pairs.
+# Nuclear target -> hypernuclear recoil, modelled as core + Lambda
+# with zero separation energy (B_Lambda = 0; no Fermi motion).
+#   n   -> Lambda
+#   12C -> 11C + Lambda  (one neutron converted to Lambda)
+# Composite recoil uses ' + ' (spaced) so it does not clash with the
+# '+' in charged-particle names like 'pi+'.
+
+reaction:
+  beam:     "pi+"
+  ejectile: "K+"
+  target:   ["n", "C12"]
+  recoil:   ["Lambda", "C11 + Lambda"]
+
+beam_momentum:
+  value: 1.2      # GeV/c
+
+plot:
+  angle_range: [0, 180]   # lab angle [deg]
+  angle_steps: 300
+  name:        "ncx_pik_target_compare"
