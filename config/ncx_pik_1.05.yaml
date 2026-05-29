@@ -1,0 +1,18 @@
+# NCX (non charge exchange), pik probe: n(pi+, K+)Lambda
+# at p_beam = 1.05 GeV/c.
+# Baryon charge unchanged: n(0) -> Lambda(0).
+# Standard elementary reaction for Lambda hypernuclear production.
+
+reaction:
+  beam:     "pi+"
+  target:   "n"
+  ejectile: "K+"
+  recoil:   "Lambda"
+
+beam_momentum:
+  value: 1.05     # GeV/c
+
+plot:
+  angle_range: [0, 180]   # lab angle [deg]
+  angle_steps: 300
+  name:        "ncx_pik_1.05"   # output base name (dir fixed to output/)

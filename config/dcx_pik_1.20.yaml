@@ -1,0 +1,17 @@
+# DCX (double charge exchange), pik probe: p(pi-, K+)Sigma-
+# at p_beam = 1.2 GeV/c.
+# Baryon charge changes by two units: p(+1) -> Sigma-(-1).
+
+reaction:
+  beam:     "pi-"
+  target:   "p"
+  ejectile: "K+"
+  recoil:   "Sigma-"
+
+beam_momentum:
+  value: 1.2      # GeV/c
+
+plot:
+  angle_range: [0, 180]   # lab angle [deg]
+  angle_steps: 300
+  name:        "dcx_pik_1.20"   # output base name (dir fixed to output/)
