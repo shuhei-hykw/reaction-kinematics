@@ -21,11 +21,19 @@ pip install -r requirements.txt
 python run.py config/ncx_pik_1.05.yaml
 ```
 
-This prints the beam-momentum threshold and writes two plots to the
-fixed `output/` directory, named from the config `plot.name`:
+This prints the beam-momentum threshold and writes plots to the fixed
+`output/` directory, named from the config `plot.name`:
 
 - `{name}_kinematic_locus.png` — ejectile lab momentum vs lab angle
 - `{name}_cm_vs_lab_angle.png` — CM angle vs lab angle
+
+If `plot.n_events` is set (> 0), two phase-space plots are also written
+(generated with the `phasespace` package, isotropic in the CM for two
+bodies; matrix element assumed flat):
+
+- `{name}_phase_space_angle.png` — lab-angle frequency histogram
+- `{name}_locus_density.png` — 2D density on the (theta_lab, p_lab)
+  plane, showing where events concentrate along the locus
 
 ## Configuration
 
@@ -34,7 +42,9 @@ Fields:
 - `reaction`: particle names (`beam`, `target`, `ejectile`, `recoil`)
 - `beam_momentum`: a single `value` or a `scan` list (GeV/c)
 - `plot`: lab `angle_range` [deg], `angle_steps`, and `name`
-  (output base name; the directory is fixed to `output/`)
+  (output base name; the directory is fixed to `output/`).
+  Optional: `n_events` (> 0 enables the phase-space plots) and
+  `angle_bins` (histogram bins over 0-180 deg, default 90)
 
 Particle names follow the `particle` package (e.g. `pi+`, `K+`,
 `Sigma-`; nuclei as `C12`, `Be9`). Names must conserve charge,
@@ -72,7 +82,8 @@ and `kpi` are possible):
 ## Module layout
 
 - `module/kinematics.py` — `TwoBodyReaction` (threshold momentum,
-  Lorentz boost from CM to lab, kinematic locus scan); `latex_name()`
-  and composite-mass support
-- `module/plotter.py` — matplotlib plots; overlays a list of cases
+  Lorentz boost from CM to lab, kinematic locus scan, phase-space MC via
+  `phasespace`); `latex_name()` and composite-mass support
+- `module/plotter.py` — matplotlib plots; overlays a list of cases, plus
+  phase-space angle histogram and (theta_lab, p_lab) density
 - `module/config.py` — YAML config loader
