@@ -1,5 +1,20 @@
 # Changelog
 
+## 2026-05-29 20:10 — Target-comparison configs and README figures
+
+### Added
+- `config/dcx_kpi_target_compare.yaml`: `(K-, pi+)` on free proton vs 9Be
+  (`Sigma-` / `9_Lambda He`, recoil `8He + Lambda`) at 1.50 GeV/c.
+- `config/dcx_pik_target_compare.yaml`: `(pi-, K+)` on free proton vs 9Be
+  (same final states) at 1.20 GeV/c.
+- `docs/` kinematic-locus figures for both, embedded side by side in
+  README (output/ is git-ignored, so committed copies live under docs/).
+
+### Notes
+- Same contrast in both probes: the free proton is confined to a forward
+  cone (double-valued locus near threshold), while on 9Be the ejectile
+  spreads over all angles at nearly constant momentum (recoilless).
+
 ## 2026-05-29 14:32 — Phase-space angular frequency and locus density
 
 ### Added

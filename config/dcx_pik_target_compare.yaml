@@ -1,0 +1,18 @@
+# DCX, pik probe (pi-, K+): free proton vs 9Be, at 1.2 GeV/c.
+# Double charge exchange (Delta Z = -2):
+#   p   (pi-, K+) Sigma-
+#   9Be (pi-, K+) 9_Lambda He   (recoil = 8He core + Lambda, B_Lambda = 0)
+
+reaction:
+  beam:     "pi-"
+  ejectile: "K+"
+  target:   ["p", "Be9"]
+  recoil:   ["Sigma-", "He8 + Lambda"]
+
+beam_momentum:
+  value: 1.2      # GeV/c
+
+plot:
+  angle_range: [0, 180]   # lab angle [deg]
+  angle_steps: 300
+  name:        "dcx_pik_target_compare"

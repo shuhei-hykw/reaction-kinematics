@@ -78,6 +78,29 @@ and `kpi` are possible):
 - `dcx_kpi_scan.yaml` — `p(K-, pi+)Sigma-` over a momentum scan
 - `ncx_pik_target_compare.yaml` — `(pi+, K+)Lambda` on a free neutron
   vs bound in 12C
+- `dcx_kpi_target_compare.yaml` — `(K-, pi+)` on free proton vs 9Be
+  (`Sigma-` / `9_Lambda He`) at 1.50 GeV/c
+- `dcx_pik_target_compare.yaml` — `(pi-, K+)` on free proton vs 9Be
+  (`Sigma-` / `9_Lambda He`) at 1.20 GeV/c
+
+### Example output: kinematic locus, free proton vs 9Be
+
+The two DCX probes producing `9_Lambda He` (recoil `8He + Lambda`,
+`B_Lambda = 0`). For the free proton the ejectile is confined to a
+forward cone (double-valued locus near threshold), whereas on the heavy
+9Be nucleus it spreads over all angles at nearly constant momentum
+(recoilless kinematics).
+
+<table>
+<tr>
+<th><code>(K-, pi+)</code> at 1.50 GeV/c</th>
+<th><code>(pi-, K+)</code> at 1.20 GeV/c</th>
+</tr>
+<tr>
+<td><img src="docs/dcx_kpi_target_compare_kinematic_locus.png" alt="(K-,pi+) p vs 9Be locus"/></td>
+<td><img src="docs/dcx_pik_target_compare_kinematic_locus.png" alt="(pi-,K+) p vs 9Be locus"/></td>
+</tr>
+</table>
 
 ## Module layout
 
